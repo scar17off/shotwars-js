@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/scar17off/shotwars-js/issues"
   },
-  "homepage": "https://github.com/scar17off/shotwars-js#readme"
+  "homepage": "https://github.com/scar17off/shotwars-js#readme",
+  "dependencies": {
+    "vec2": "^1.6.1"
+  }
 }
