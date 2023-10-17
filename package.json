@@ -1,0 +1,24 @@
+{
+  "name": "shotwars-js",
+  "version": "1.0.0",
+  "description": "The ShotWars.io API for bots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scar17off/shotwars-js.git"
+  },
+  "keywords": [
+    "shotwars",
+    "shotwars.io",
+    "shotwars-js"
+  ],
+  "author": "scar17off",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/scar17off/shotwars-js/issues"
+  },
+  "homepage": "https://github.com/scar17off/shotwars-js#readme"
+}
