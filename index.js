@@ -59,8 +59,8 @@ class Client extends EventEmitter.EventEmitter {
 
         if(!options.server && !options.ws) {
             options.server = Servers["eu1"];
-            options.ws = "wss://" + options.server + "/ws/";
         };
+        options.ws = "wss://" + options.server + "/ws/";
         if(!options.class) options.class = "ak-47";
         if(!options.skin) options.skin = "ak-47";
         if(!options.autospawn) options.autospawn = true;
@@ -90,9 +90,9 @@ class Client extends EventEmitter.EventEmitter {
             if(options.autospawn) this.spawn();
         });
 
-        this.net.ws.addEventListener("message", rawMessage => {
-            rawMessage = rawMessage.data;
-            const queue = msgpack.decode(rawMessage);
+        this.net.ws.addEventListener("message", msg => {
+            msg = msg.data;
+            const queue = msgpack.decode(msg);
             const playerUpdates = queue.filter(obj => typeof obj.chat == "string");
             const other = queue.filter(obj => typeof obj.chat == "undefined");
             
@@ -103,12 +103,6 @@ class Client extends EventEmitter.EventEmitter {
                 item.name = nameCache[item.id];
                 if(this.player.id == key) {
                     this.player = item;
-                    if(options.autospawn && this.player.health < 10) {
-                        setTimeout(() => {
-                            this.spawn();
-                        }, 1000);
-                        this.emit("respawn");
-                    };
                     return;
                 };
                 for(let property in playerCache[key]) 
@@ -173,7 +167,7 @@ class Client extends EventEmitter.EventEmitter {
                 };
             });
 
-            this.emit("rawMessage", rawMessage);
+            this.emit("message", msg);
         });
 
         this.net.ws.addEventListener("close", () => {
