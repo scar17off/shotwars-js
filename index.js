@@ -1,6 +1,10 @@
 const WebSocket = require("ws");
 const EventEmitter = require("events");
-const msgpack = require("./msgpack.min.js");
+/* Importing msgpack.min.js, remove this if you use it on a browser */
+const fs = require('fs');
+const msgpackCode = fs.readFileSync('./msgpack.min.js.txt', 'utf8');
+const msgpack = eval(msgpackCode);
+/* End of msgpack.min.js import */
 
 const Servers = {
     eu1: "newyork1.shotwars.io",
